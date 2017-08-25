@@ -16,6 +16,7 @@ int main()
 
     while(cin >> x and x)
         insert(x, root);
+//     remove(8, root);
        
     /*while(f)
     {  

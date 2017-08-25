@@ -179,9 +179,9 @@ void remove(int data, Node* &root)
 	}
 	else
 	{
-		Node *temroot = root;
+		Node *temp = root;
 		root = (root->left != nullptr) ? root->left : root->right;
-		delete(root);
+		delete(temp);
 	}
 	balance(root);
 }
