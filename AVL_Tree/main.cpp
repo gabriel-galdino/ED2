@@ -10,41 +10,37 @@
 */
 int main()
 {
-    Node *root = nullptr;
+    AVLTree *tree = new AVLTree();
     bool f = true;
-    int x, y;
+    char c;
+    int x;
 
-    while(cin >> x and x)
-        insert(x, root);
-//     remove(8, root);
-       
-    /*while(f)
-    {  
-        cout << "1. Inserir\n";
-        cout << "2. Remover\n";
-        cout << "3. Pesquisar\n";
-        cout << "0. Sair\n";
-        cin >> y;
-        switch(y)
+    while(f)
+    {
+        cin >> c;
+        switch(c)
         {
-            case 1:
+            case 'i':
+            {
                 cin >> x;
-                insert(x, root);
+                tree->insert(x, tree->root);
                 break;
-            case 2:
+            }
+            case 'r':
+            {
                 cin >> x;
-                remove(x, root);
+                tree->remove(x, tree->root);
                 break;
-            case 3:
-                cin >> x;
-                if(search(x, root)) cout << x << " existe\n";
-                else cout << x << " nao existe\n";
-            case 0:
+            }
+            case 'p':
+            {
+                tree->rootostorder(tree->root, 4);
+                break;
+            }
+            default:
                 f = false;
         }
-    }*/
-   	rootostorder(root, 4);
-    //inorder(root);
-    //cout << root->data << root->balanceFactor << '\n';
+    }
+
     return 0;
 }

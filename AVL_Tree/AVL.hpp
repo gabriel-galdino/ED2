@@ -2,38 +2,41 @@
 
 using namespace std;
 
-struct Node
+class Node
 {
-    int data, balanceFactor;
-    Node *right;
-    Node *left;
-    Node(int _data, int _balanceFactor = 0)
-    {
-        data = _data;
-        balanceFactor = _balanceFactor;
-        left = nullptr;
-        right = nullptr;
-    }
+    public:
+        int data, balanceFactor;
+        Node *right, *left;
+        Node(int _data, int _balanceFactor = 0) : data (_data), balanceFactor(_balanceFactor), left(nullptr), right(nullptr){}
 };
 
-void rootostorder(Node* root, int indent=0);
 
-int search(int data, Node *root);
+class AVLTree
+{
+    public:
+        AVLTree(){};
+        Node *root;
+        
+        void rootostorder(Node* root, int indent=0);
 
-void inorder(Node* root);
+        int search(int data, Node *root);
 
-int height(Node* root);
+        void inorder(Node* root);
 
-int getBalanceFactor(Node* root);
+        int height(Node* root);
 
-void leftRotate(Node* &x);
+        int getBalanceFactor(Node* root);
 
-void rightRotate(Node* &x);
+        void leftRotate(Node* &x);
 
-void balance(Node* &root);
-
-Node* min(Node *root);
-
-void insert(int data, Node* &root);
-
-void remove(int data, Node* &root);
+        void rightRotate(Node* &x);
+        
+        void balance(Node* &root);
+        
+        Node* min(Node *root);
+        
+        void insert(int data, Node* &root);
+        
+        void remove(int data, Node* &root);
+        
+};

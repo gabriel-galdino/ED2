@@ -1,6 +1,6 @@
 #include "AVL.hpp"
 
-void rootostorder(Node* root, int indent)
+void AVLTree::rootostorder(Node* root, int indent)
 {
     if(root != nullptr) {
         if(root->right) {
@@ -18,9 +18,7 @@ void rootostorder(Node* root, int indent)
     }
 }
 
-
-
-int search(int data, Node* root)
+int AVLTree::search(int data, Node* root)
 {
     if(data == root->data)
         return 1;
@@ -33,8 +31,7 @@ int search(int data, Node* root)
     else search(data, root->right);
 }
 
-
-void inorder(Node* root)
+void AVLTree::inorder(Node* root)
 {
     if(root)
     {
@@ -44,15 +41,8 @@ void inorder(Node* root)
     }
 }
 
-int height(Node* root)
+int AVLTree::height(Node* root)
 {
-	
-	/* if(root == nullptr)
-		return -1;
-	else
-		return root->height; */
-
-		
     if(root == nullptr)
         return -1;
     int lh = 0, rh = 0;
@@ -61,12 +51,12 @@ int height(Node* root)
     return max(lh, rh) + 1;
 }
 
-int getBalanceFactor(Node* root)
+int AVLTree::getBalanceFactor(Node* root)
 {	
 	return height(root->left) - height(root->right);
 }
 
-void leftRotate(Node* &x)
+void AVLTree::leftRotate(Node* &x)
 {
     Node *aux;
     
@@ -81,7 +71,7 @@ void leftRotate(Node* &x)
   
 }
 
-void rightRotate(Node* &x)
+void AVLTree::rightRotate(Node* &x)
 {
     Node *aux;
     
@@ -96,27 +86,8 @@ void rightRotate(Node* &x)
 
 }
 
-void balance(Node* &root)
+void AVLTree::balance(Node* &root)
 {
-	/* if(root == nullptr)
-		return;
-	if(height(root->left) - height(root->right) > 1 
-	   and height(root->left->right) > height(root->left->left))
-	{
-		leftRotate(root->left);
-		rightRotate(root);
-	}
-	else if(height(root->left) - height(root->right) > 1)
-		rightRotate(root);
-	else if(height(root->right) - height(root->left) > 1 
-	   and height(root->right->left) > height(root->right->right))
-	{
-		rightRotate(root->right);
-		leftRotate(root);
-	}
-	else if(height(root->right) - height(root->left) > 1)
-		leftRotate(root);
-	root->height = max(height(root->right), height(root->left)) + 1;  */
 	if(root == nullptr)
 		return;
 	root->balanceFactor = getBalanceFactor(root);
@@ -140,7 +111,7 @@ void balance(Node* &root)
     } 
 }
 
-Node* min(Node* root)
+Node* AVLTree::min(Node* root)
 {
 	if(root == nullptr)
 		return nullptr;
@@ -150,7 +121,7 @@ Node* min(Node* root)
 	
 }
 
-void insert(int data, Node* &root)
+void AVLTree::insert(int data, Node* &root)
 {
 	if(root == nullptr)
 		root = new Node(data);
@@ -164,7 +135,7 @@ void insert(int data, Node* &root)
 	}
 }
 
-void remove(int data, Node* &root)
+void AVLTree::remove(int data, Node* &root)
 {
 	if(root == nullptr)
 		return;
